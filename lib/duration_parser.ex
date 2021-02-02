@@ -37,7 +37,7 @@ defmodule DurationParser do
   """
 
   def parse_minutes(input) when is_binary(input) and byte_size(input) > 0 do
-    input = String.downcase(input)
+    input = input |> String.trim() |> String.downcase()
     cond do
       String.contains?(input, ":")  -> parse_time(input)
       String.contains?(input, " ")  -> parse_hm_time(input)
